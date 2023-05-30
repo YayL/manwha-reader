@@ -21,7 +21,9 @@ A multi-source Manga/Manwha/Manhua reader with extension capabilities to add mor
 
 	## Keybindings for reader
 	Left Arrow - Previous chapter
+
 	Right Arrow - Next chapter
-	Q - Back to main page
+	
+    Q - Back to main page
 
 
