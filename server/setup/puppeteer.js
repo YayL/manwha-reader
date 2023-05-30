@@ -18,7 +18,7 @@ async function start(browser) {
 Puppeteer.use(StealthPlugin());
 
 Puppeteer.launch({
-        headless: true
+        headless: 'new'
 }).then(start);
 
 module.exports = [Helper, Puppeteer]
