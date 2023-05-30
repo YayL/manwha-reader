@@ -1,0 +1,98 @@
+<div class="result-body">
+    <a href="/reader/?u={{ href }}&c=0">
+        <h1 class="result-title"><b>{{ title }}</b></h1>
+        <img class="result-image" src="{{ thumbnail }}">
+        <div class="result-info">
+            <h2 class="result-rating">Rating: <b>{{ rating }}</b></h2>
+            <h2 class="result-chapter-count">Chapter Counter: <b>{{ chapter_count }}</b></h2>
+        </div>
+    </a>
+</div>
+
+<style>
+.result-body {
+    display: flex;
+
+    width: 20%;
+
+    padding-top: 20px;
+    padding-bottom: 999999em;
+    margin-bottom: -999999em;
+
+    background-color: rgb(30, 30, 30);
+}
+
+.result-body > a {
+    all: unset;
+    display: flex;
+    
+    width: 80%;
+    height: 100%;
+   
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+}
+
+.result-body > a:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.result-title {
+    all: unset;
+
+    width: 100%;
+    height: auto;
+
+    font-size: 2ch;
+    text-align: center;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.result-image {
+    width: 100%;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-info {
+    display: flex;
+
+    width: 100%;
+    height: fit-content;
+
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-rating {
+    all: unset;
+    width: 100%;
+    height: auto;
+
+    font-size: 1.5ch;
+}
+
+.result-chapter-count {
+    all: unset;
+    width: 100%;
+    height: auto;
+
+    font-size: 1.5ch;
+}
+</style>

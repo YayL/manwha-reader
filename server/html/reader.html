@@ -1,0 +1,73 @@
+<div>
+    <div id="reader-box">
+        <div id="reader-info">
+            <h1> Chapter {{ chapter }}</h1>
+            <div class="navigation">
+                <a id="back_button" href="?u={{ href }}&c={{ back }}">Back</a>
+                <a id="next_button" href="?u={{ href }}&c={{ next }}">Next</a>
+            </div>
+        </div>
+        {{ <for> }}
+        <div class="navigation">
+            <a href="?u={{ href }}&c={{ back }}">Back</a>
+            <a href="?u={{ href }}&c={{ next }}">Next</a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    window.addEventListener("keydown", (event) => {
+        // left arrow key press
+        if (event.keyCode == 37) {
+            document.getElementById("back_button").click();
+        } // right arrow key press
+        else if (event.keyCode == 39) {
+            document.getElementById("next_button").click();
+        }
+    });
+</script>
+
+<style>
+
+#reader-box {
+    display: flex;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    flex-direction: column;
+    width: 45%;
+}
+
+#reader-info {
+    display: flex;
+    background-color: rgb(20, 20, 20);
+    
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation {
+    display: flex;
+    width: 50%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation > a {
+    all: unset;
+    
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.navigation > a:hover {
+    cursor: pointer;
+}
+
+</style>

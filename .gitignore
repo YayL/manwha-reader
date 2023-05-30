@@ -1,0 +1,4 @@
+server/node_modules/*
+server/.cache/*
+app/*
+server/package-lock.json

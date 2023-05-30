@@ -1,0 +1,46 @@
+module.exports = {
+    name: "example", // lowercased
+    storage: {}, // not neccessary just there to show that there is storage for each source
+    URL: "https://website-example.com/",
+
+    // ########################################
+    // # Open a webpage on the website        #
+    // # ------------------------------------ #
+    // #                                      #
+    // # Argument 1: Page object passed from  #
+    // #             caller                   #
+    // # Argument 2: URL to open              #
+    // #                                      #
+    // # Return: Undefined                    #
+    // ########################################
+
+    open: async function(page, link) {},
+
+    // ########################################
+    // # Get the images for a chapter on the  #
+    // # website                              #
+    // # ------------------------------------ #
+    // #                                      #
+    // # Argument 1: Page object passed from  #
+    // #             caller                   #
+    // # Argument 2: URL to open              #
+    // #                                      #
+    // # Return: List of chapter image source #
+    // ########################################
+
+    get: async function(page, link) {},
+
+    // ########################################
+    // # Search function for the content on   #
+    // # the website                          #
+    // # ------------------------------------ #
+    // #                                      #
+    // # Argument 1: Page object passed from  #
+    // #             caller                   #
+    // # Argument 2: Search text              #
+    // #                                      #
+    // # Return: List of search results       #
+    // ########################################
+
+    search: async function(page, search) {}
+}

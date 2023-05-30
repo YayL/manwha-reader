@@ -1,0 +1,46 @@
+<body>
+    <div>
+        <div id="result-info">
+            <h2> "{{ search }}" ({{ results }}) </h2>
+            {{ <search> }}
+        </div>
+        <div id="result-box">
+            {{ <for> }}
+        </div>
+    </div>
+</body>
+
+<style>
+
+#result-box {
+    display: flex;
+
+    height: fit-content;
+    width: 70%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    overflow: hidden;
+
+    flex-wrap: wrap;
+
+    background-color: rgb(20, 20, 20);
+}
+
+#result-info {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+}
+
+#result-info > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+</style>
