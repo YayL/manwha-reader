@@ -4,12 +4,14 @@
             <h1> Chapter {{ chapter }}</h1>
             <div class="navigation">
                 <a id="back_button" href="?u={{ href }}&c={{ back }}">Back</a>
+                <a id="home_button" href="/">Home</a>
                 <a id="next_button" href="?u={{ href }}&c={{ next }}">Next</a>
             </div>
         </div>
         {{ <for> }}
         <div class="navigation">
             <a href="?u={{ href }}&c={{ back }}">Back</a>
+            <a href="/">Home</a>
             <a href="?u={{ href }}&c={{ next }}">Next</a>
         </div>
     </div>
@@ -24,6 +26,9 @@
         } // right arrow key press
         else if (event.keyCode == 39) {
             document.getElementById("next_button").click();
+        } // esc key press
+        else if (event.keyCode == 81) {
+            document.getElementById("home_button").click();
         }
     });
 </script>
@@ -52,7 +57,7 @@
 
 .navigation {
     display: flex;
-    width: 50%;
+    width: 60%;
 
     margin-left: auto;
     margin-right: auto;

@@ -23,11 +23,17 @@ module.exports = {
         data = Object.values(data).flat();
 
         const htmlhelper = request.app.get("htmlhelper")
+
+        // generate search_result component with data
         const elements = htmlhelper.generate_components("search_result", data);
+
+        // add generated components to the HTML
         let html = htmlhelper.replace_for(this.html, elements);
-
+        
+        // replace all components in HTML
         html = htmlhelper.replace_components(html, {});
-
+        
+        // change search and results data tags
         html = htmlhelper.replaceAll(html, {search: query.s, results: data.length});
 
         response.set("Content-Type", "text/html");

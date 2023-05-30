@@ -23,22 +23,25 @@ module.exports = {
         let href;
         [href, chapter] = await page.evaluate((chapter) => {
             const el = document.getElementById("chapterlist").children[0];
-            let first = el.children[el.children.length - 1].dataset["num"];
-            let last = el.children[0].dataset["num"];
-
+            let first = Number(el.children[el.children.length - 1].dataset["num"]);
+            let last = Number(el.children[0].dataset["num"]);
+            
             if (chapter < first)
                 chapter = first
             else if (last < chapter)
                 chapter = last;
-
+            
+            // find index for correct chapter
             let index = Array.from(el.children).findIndex((value) => value.dataset["num"] == chapter);
 
             return [el.children[index].firstElementChild.firstElementChild.firstElementChild.href, chapter];
         }, chapter);
-
+        
+        // open chapter page
         if (!await this.open(page, href))
             return [];
-
+        
+        // get all images on page
         return [await page.evaluate(async () => {
             return Array.from(document.querySelectorAll("img.alignnone")).map((item) => item.src);
         }), chapter];
@@ -47,7 +50,8 @@ module.exports = {
     search: async function(page, search) {
         if (!await this.open(page, `${this.URL}?s=${search}`))
             return [];
-
+        
+        // get the amount of pages from the search
         let page_count = Number(await page.evaluate(() => {
             return document.getElementsByClassName("page-numbers").length;
         })), data = [];
@@ -66,9 +70,9 @@ module.exports = {
                 })
             }));
 
-        // stop when page is more than page_count
-        if (curr_page > page_count || !await this.open(page, `${this.URL}page/${curr_page}/?s=${search}`))
-            break;
+            // stop when page is more than page_count
+            if (curr_page > page_count || !await this.open(page, `${this.URL}page/${curr_page}/?s=${search}`))
+                break;
         }
         
         page.close();

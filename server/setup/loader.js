@@ -24,19 +24,22 @@ function load_route_file(app, path, file) {
         const html = route.html 
                                 ? `./html/${route.html}`
                                 : `./html${path}${name}.html`;
-
+        
         if (typeof route.run !== "function" || typeof route.method !== "string" || typeof route.subpath !== "string") {
             console.log(`\t${name}: ERROR Incorrect file format`);
             return;
         }
-    
+        
+        // check if file exists
         let found_html = fs.existsSync(html) && fs.lstatSync(html).isFile()
-
+        
         if (found_html) {
             readFile(html, route);
+            // listen for file changes using chokidar module
             chokidar.watch(html, {persistent: true}).on('change', () => readFile(html, route));
         }
-
+        
+        // add route to the router
         folder_router[route.method](`/${route.subpath}`, handleErrorAsync(route.run.bind(route)));
         console.log(`\t${route.method.toUpperCase()}\t${name}: ${path}${route.subpath}`);
         console.log(`\t[HTML: ${found_html ? "Yes" : "No" }]`)

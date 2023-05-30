@@ -22,10 +22,13 @@ module.exports = {
         // if the input chapter number doesn't exist
         if (chapter != query.c)
             return response.redirect(request.url.replace(`&c=${query.c}`, `&c=${chapter}`));
-
+        
         const htmlhelper = request.app.get("htmlhelper"); 
-        const elements = htmlhelper.generate_components("reader_image", data.map((src) => {return {src: src}}));
 
+        // generate multiple reader_images component
+        const elements = htmlhelper.generate_components("reader_image", data.map((src) => {return {src: src}}));
+        
+        // add all generated components to the html
         let html = htmlhelper.replace_for(this.html, elements);
         
         html = htmlhelper.replaceAll(html, {chapter: query.c, href: query.u, back: chapter - 1, next: chapter + 1});

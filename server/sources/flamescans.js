@@ -31,14 +31,17 @@ module.exports = {
             else if (last < chapter)
                 chapter = last;
 
+            // find index for correct chapter
             let index = Array.from(el.children).findIndex((value) => value.dataset["num"] == chapter);
 
             return [el.children[index].firstElementChild.href, chapter];
         }, chapter);
 
+        // open chapter page
         if (!await this.open(page, href))
             return [];
 
+        // get all images on page
         return [await page.evaluate(async () => {
             return Array.from(document.querySelectorAll("img.aligncenter.size-full")).map((item) => item.src);
         }), chapter];
@@ -48,12 +51,14 @@ module.exports = {
         if (!await this.open(page, `${this.URL}?s=${search}`))
             return [];
 
+        // get the amount of pages from the search
         let page_count = Number(await page.evaluate(() => {
             return document.getElementsByClassName("page-numbers").length;
         })), data = [];
 
         for (let curr_page = 2; 1; ++curr_page) {
             data.push(await page.evaluate(() => {
+                // navigate down the htmlnode tree to the values we need
                 return Array.from(document.querySelectorAll(".bs>.bsx>a")).map((item) => {
                     return {
                         href: item.href,
