@@ -39,6 +39,12 @@ process.on("uncaughtException", (error) => {
 	console.error(error);
 });
 
+process.on("unhandledRejection", (error) => {
+    close();
+    console.log("[PROCESS] An error occured:")
+    console.error(error);
+});
+
 process.on("exit", () => close());
 process.on("SIGTERM", () => close());
 process.on("SIGINT", () => close());

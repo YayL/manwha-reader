@@ -2,7 +2,7 @@ const { TimeoutError } = require("puppeteer")
 
 module.exports = {
     name: "asurascans",
-    URL: "https://www.asurascans.com/",
+    URL: "https://asura.nacm.xyz/",
     storage: {},
     open: async function(page, link) {
         await page.goto(link, {waitUntil: 'domcontentloaded'});
